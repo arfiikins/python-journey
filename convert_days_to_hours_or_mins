@@ -1,0 +1,35 @@
+# This program will ask you to input number of days and the units to convert (only hours and minutes)
+def days_to_units(n):
+    if days_and_units_dictionary["unit"] == "hours":
+        return f"{n} day(s) are {n*24} hours"
+    elif days_and_units_dictionary["unit"] == "minutes":
+        return f"{n} day(s) are {n*24*60} minutes"
+    else:
+        return "Invalid Unit. Please use hours or minutes only"
+
+
+def validate_user_input():
+    # try to execute the conversion except for ValueError compile error
+    try:
+        user_input_num = int(days_and_units_dictionary["days"])
+        # used to convert input days to hours
+        if user_input_num > 0:
+            print(days_to_units(user_input_num))
+        elif user_input_num == 0:
+            print("You have entered zero, so no conversion!")
+        else:
+            print("You have entered a negative number! Try again")
+    except ValueError:
+        print("Invalid Input!")
+
+
+user_input = ""
+# the program will only be terminated once an 'exit' value has been input
+while user_input != "exit":
+    try:
+        user_input = input("Input positive days and conversion unit!\n")
+        days_and_units = user_input.split(":")
+        days_and_units_dictionary = {"days": days_and_units[0], "unit": days_and_units[1]}
+        validate_user_input()
+    except IndexError:
+        print("Please try again!")
