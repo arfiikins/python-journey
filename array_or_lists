@@ -1,0 +1,31 @@
+# This Python code shows how to convert multiple values (array or list) in a single input. (days to hours) 
+calculation_units = 24
+name_of_unit = "hours"
+
+
+def days_to_units(n):
+    return f"{n} day(s) are {n*calculation_units} {name_of_unit}"
+
+
+def validate_user_input():
+    # try to execute the conversion except for ValueError compile error
+    try:
+        user_input_num = int(user_input_element)
+        # used to convert input days to hours
+        if user_input_num > 0:
+            print(days_to_units(user_input_num))
+        elif user_input_num == 0:
+            print("You have entered zero, so no conversion!")
+        else:
+            print("You have entered a negative number! Try again")
+    except ValueError:
+        print("Invalid Input!")
+
+
+user_input = ""
+# the program will only be terminated once an 'exit' value has been input
+while user_input != "exit":
+    user_input = input("Input Positive Hours\n")
+    # for loop is to store all input values into an array that splits by ', ' value
+    for user_input_element in user_input.split(", "):
+        validate_user_input()
